@@ -90,10 +90,12 @@ ax1 = Axis(fig[1,1])
 ax2 = Axis(fig[2,1])
 ax3 = Axis(fig[3,1])
 
-p1 = GLMakie.scatter!(ax1, Dtime_all_rata, Model_Rsoil_met, color = :black) # there are periods with VWC = 0 which is impossible
+p1 = GLMakie.scatter!(ax1, Dtime_all_rata, Model_Rsoil_met, color = :green) # there are periods with VWC = 0 which is impossible
 p2 = GLMakie.scatter!(ax2, Dtime_all_rata, met."TC_Avg(1)", color = :red)
 p3 = GLMakie.scatter!(ax3, Dtime_all_rata, met.VWC_Avg, color = :blue)
-p4 = GLMakie.scatter!(ax1, Dtime_rata_m, Rsoil_f, color = :green) 
+p4 = GLMakie.scatter!(ax1, Dtime_rata_m, Rsoil_f, color = :black)
+p5 = GLMakie.scatter!(ax2, Dtime_rata_m, Tsoil_f, color = :black)
+p6 = GLMakie.scatter!(ax3, Dtime_rata_m, SWC_f, color = :black)
 
 # Attributes of Axis, e.g., ax1.attributes 
 ax1.ylabel = to_latex("R_{soil} (\\mumol m^{-2} s^{-1})");
@@ -110,6 +112,8 @@ p1.strokewidth = 0
 p2.strokewidth = 0
 p3.strokewidth = 0
 p4.strokewidth = 0
+p5.strokewidth = 0
+p6.strokewidth = 0
 
 fig
 save(joinpath("Output", "timeseries.png"), fig);
